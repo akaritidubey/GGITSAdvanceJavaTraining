@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from CalculatorService WSDL service -->
+
+  <service name="Calculator" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://webDynamic"/>
+      <parameter name="wsdlServiceElement" value="CalculatorService"/>
+      <parameter name="schemaQualified" value="http://webDynamic"/>
+      <parameter name="wsdlServicePort" value="Calculator"/>
+      <parameter name="className" value="webDynamic.Calculator"/>
+      <parameter name="wsdlPortType" value="Calculator"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://webDynamic" xmlns:retNS="http://webDynamic" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="hello" qname="operNS:Hello" returnQName="retNS:HelloReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://webDynamic" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:Name" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://webDynamic" xmlns:retNS="http://webDynamic" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="multiply" qname="operNS:Multiply" returnQName="retNS:MultiplyReturn" returnType="rtns:int" soapAction="">
+        <parameter xmlns:pns="http://webDynamic" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:a" type="tns:int"/>
+        <parameter xmlns:pns="http://webDynamic" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:b" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://webDynamic" xmlns:retNS="http://webDynamic" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="subtract" qname="operNS:Subtract" returnQName="retNS:SubtractReturn" returnType="rtns:int" soapAction="">
+        <parameter xmlns:pns="http://webDynamic" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:a" type="tns:int"/>
+        <parameter xmlns:pns="http://webDynamic" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:b" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://webDynamic" xmlns:retNS="http://webDynamic" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="divide" qname="operNS:Divide" returnQName="retNS:DivideReturn" returnType="rtns:int" soapAction="">
+        <parameter xmlns:pns="http://webDynamic" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:a" type="tns:int"/>
+        <parameter xmlns:pns="http://webDynamic" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:b" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://webDynamic" xmlns:retNS="http://webDynamic" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="add" qname="operNS:Add" returnQName="retNS:AddReturn" returnType="rtns:int" soapAction="">
+        <parameter xmlns:pns="http://webDynamic" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:a" type="tns:int"/>
+        <parameter xmlns:pns="http://webDynamic" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:b" type="tns:int"/>
+      </operation>
+      <parameter name="allowedMethods" value="add subtract divide hello multiply"/>
+
+  </service>
+</deployment>
